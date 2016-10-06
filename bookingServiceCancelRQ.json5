@@ -9,7 +9,7 @@
 					//It will be null for an action "CancelOnly". 
 					"penalty":{
 					          "amount":10.0,
-					          "currency":"USD"
+					          "currency":"INR"
 					 }
 				}]
 			"action":"CancelAndRefund", //  Action to be taken.Possible values are CancelOnly/RefundOnly/RefundAndCancel/CancelAndRefund	
