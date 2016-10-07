@@ -1,0 +1,234 @@
+{
+	// Products to book/purchase
+	"products" : {
+		// List of flight products to be purchased
+		"flights" : [{
+				"refId" : 1, //flight reference number of the flight product that was priced
+				"sessionId" : "71760a36-9754-46b2-85f3-384030bab100", //session id received in the price request
+				"associatedPassengerRefIds" : [1], //list of associated passengers for this product
+				// Mapping of the product and payment for multi form of payment
+				"paymentBreakup" :
+				[{
+						"formOfPaymentRefId" : 1, // payment reference id.
+						"amount" : 120, // amount to be charged
+						"currency" : "USD" // currency of the amount to be charged
+					}, {
+						"formOfPaymentRefId" : 2, // payment reference id.
+						"amount" : 60, // amount to be charged
+						"currency" : "PTS" // currency of the amount to be charged
+					}
+				]
+			}
+		],
+		// List of hotel products to be purchased
+		"hotels" : [{
+				"hotelId" : "1234", //Master hotel Id of hotel to be booked.It should be same as the price response hotel Id.
+				"rateRefIds" : 1, //rate reference id.
+				"sessionId" : "8a9db114-5e29-43fa-9319-c5e6cd0a704f", //session id received in the price request
+				"associatedPassengerRefIds" : [1, 2], //list of associated passengers for this product
+				"paymentBreakup" :
+				[{
+						"formOfPaymentRefId" : 1, // payment reference id.
+						"amount" : 143, // amount to be charged
+						"currency" : "USD" // currency of the amount to be charged
+					}
+				],
+				//(Mandatory): Information of the primary guest who is doing the booking
+				"primaryPassengerRefId" :"1"				
+				}],
+		// List of car products to be purchased
+		"cars" : [{
+				"refId" : 3, //car reference number of the car product that was priced
+				"sessionId" : "fcf85c4d-9238-43aa-9c60-6241323834ff", //session id received in the price request
+				"associatedPassengerRefIds" : [1, 2], //list of associated passengers for this product
+				"paymentBreakup" :
+				[{
+						"formOfPaymentRefId" : 1, // payment reference id.
+						"amount" : 320, // amount to be charged
+						"currency" : "USD" // currency of the amount to be charged
+					}
+				]
+			}
+		],
+		// List of activity products to be purchased
+		"activities" : [{
+				"refId" : 4, //activity reference number of the activity product that was priced
+				"sessionId" : "fcf85c4d-9238-43aa-9c60-6241323834ff", //session id received in the price request
+				"associatedPassengerRefIds" : [2], //list of associated passengers for this product
+				"primaryPassengerRefId" :"1",
+				"paymentBreakup" :
+				[{
+						"formOfPaymentRefId" : 2, // payment reference id.
+						"amount" : 664, // amount to be charged
+						"currency" : "PTS" // currency of the amount to be charged
+					}
+				],
+				"bookingAnswers" : [{
+						"questionRefId" : "1", // question reference id
+						"answer" : "Some answer" // freeform text answer
+					}, {
+						"questionRefId" : "3",
+						"answer" : "No"
+					}
+				]
+			}
+		]
+	},
+	// Unique list of passengers that will be consuming the trip
+	"passengers" : [{
+			"refId" : 1, //unique id for the passenger to be identified
+			"type" : "adult / child / senior / infantInLap",
+			"name" : {
+				// optional field if not applicable
+				"title" : "mr/mrs/ms/miss/mx/master/madam",
+				"first" : "FirstName",
+				"middle" : "MiddleName",
+				"last" : "LastName",
+				"suffix" : "Jr"
+			},
+			"dob" : "1989-12-12",
+			"gender" : "male/female/other",
+			// Contact information of the passenger
+			"contactInfo" : {
+				"phoneNos" : [{
+						"type" : "unknown/mobile/work/home",
+						"num" : "9087654321",
+						"countryCode" : "91",
+						"ext" : "123",
+						"areaCode" : "022"
+					}
+				],
+				"emails" : ["abc@xyz.com"]
+			},
+			// Optional information about passenger
+			"options" : {
+				"passengerId" : "T343434", //(Optional) This will be used for reporting purpose.
+				"knownTravelerNo" : "213213", //known traveler number is for preCheck at airport
+				"redressNo" : "435435", //redress number is to identify a a passenger
+				// membership information
+				"memberships" : {
+					"frequentFlyers" : [{
+							"programCarrier" : "DL",
+							"marketingCarrier" : "US",
+							"num" : "12343"
+						}
+					],
+					"hotelLoyalties" : [{
+							"chainCode" : "HI",
+							"num" : "123"
+						}
+					],
+					"carLoyalties" : [{
+							"rentalCompany" : "ZI",
+							"num" : "878200"
+						}
+					]
+				},
+				// Passenger passport details
+				"passport" : {
+					"num" : "JCF233J",
+					"placeOfIssue" : "Mumbai",
+					"dateOfIssue" : "2012-12-12",
+					"expiryDate" : "2022-12-12",
+					"nationality" : "IN"
+				}
+			}
+		}
+	],
+	// Customer of the booking
+	"customer" : {
+		// Name of the customer
+		"name" : {
+			"first" : "John", //first name of the customer
+			"middle" : "Jane", //middle name of the customer
+			"last" : "Doe", //last name of the customer
+			"title" : "mr/mrs/ms/miss/mx/master/madam", //title of the customer
+			"suffix" : "Jr." //sufix of the customer
+		},
+		"contactInfo" : {
+			"phones" : [{
+					"type" : "unknown/mobile/work/home",
+					"num" : "9087654321",
+					"countryCode" : "91",
+					"ext" : "123",
+					"areaCode" : "022"
+				}
+			],
+			"address" : {
+				"line1" : "AddressLine1",
+				"line2" : "AddressLine2",
+				"city" : {
+					"code" : "PNQ",
+					"name" : "Pune"
+				},
+				"state" : {
+					"code" : "MH",
+					"name" : "Maharashtra"
+				},
+				"countryCode" : "IN",
+				"postalCode" : "411014"
+			},
+
+			"emails" : ["abc@xyz.com"]
+		},
+		"options" : {
+			"customerId" : "43435" // This is for reporting purpose
+		}
+	},
+	// List of payments for booking. The ref ids in the form of payments should have unique ids across.
+	"formOfPayment" : {
+		// Here cards holds the credit cards. List of credit cards
+		"cards" : [{
+				"refId" : 1, //Unique identifier for credit card form of payment
+				"num" : "4444333322221111", //credit card number
+				"nameOnCard" : "John Doe", // credit card number
+				"cvv" : 123, // security/cvv number
+				//possible values: VI/CA/AX/DS/TO/DC/JC/BC/T/R/E
+				"issuedBy" : "VI",
+				"type" : "credit", //debit
+				"expiry" : {
+					"month" : 12,
+					"year" : 2016
+				},
+				"contactInfo" : {
+					"billingAddress" : {
+						"line1" : "AddressLine1",
+						"line2" : "AddressLine2",
+						"city" : {
+							"code" : "PNQ",
+							"name" : "Pune"
+						},
+						"state" : {
+							"code" : "MH",
+							"name" : "Maharashtra"
+						},
+						"countryCode" : "IN",
+						"postalCode" : "411014"
+					},
+					"phones" : [{
+							"type" : "unknown/mobile/work/home",
+							"num" : "9087654321",
+							"countryCode" : "91",
+							"ext" : "123",
+							"areaCode" : "022"
+						}
+					],
+					"emails" : ["abc@xyz.com"]
+				}
+			}
+		],
+		"points" : [{
+				"refId" : 2, //Unique identifier for points form of payment
+				"userId" : "12343", //User id of user provided by the point bank/point provider.
+				"conversionFactor" : 10.5, // This is a point conversion factor. It is required for persisting the current conversion rate for future reference/refunds
+				"additionalData" : "some remark" //Here consumer can add extra information regarding point to use it later.
+			}
+		],
+		"offline" : [{
+				"refId" : 4, //Unique identifier for offline form of payment
+				"type" : "cash", //Any offline/counter/cash/check.user can give its own type.No restriction on it.
+				"remark" : "some remark" //Any remark text.
+			}
+		]
+	}
+}
